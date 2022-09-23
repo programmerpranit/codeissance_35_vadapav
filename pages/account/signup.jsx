@@ -174,22 +174,3 @@ const Signup = () => {
 
 export default Signup;
 
-/*
-            <div>
-              <h3 className=" text-lg p-2 mb-1 mr-5">I am a ?</h3>
-              <input
-                type="radio"
-                name="role"
-                value={1}
-                className="m-5 text-lg text-black"
-              />
-              <label>Teacher</label>
-              <input
-                type="radio"
-                name="role"
-                value={0}
-                className="m-5 text-lg text-black"
-              />
-              <label>Student</label>
-            </div>
-*/
