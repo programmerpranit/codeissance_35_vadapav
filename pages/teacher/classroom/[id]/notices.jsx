@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { useRouter } from 'next/router'
 
 const Notices = () => {
+
+  const router = useRouter()
+  const { id } = router.query
+    
+
   return (
     <>
       <div>
@@ -10,7 +16,7 @@ const Notices = () => {
         <button onclick="buttonHandler()" title="Notices"
         class="fixed z-90 bottom-10 right-8 bg-blue-600 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-blue-700 hover:drop-shadow-2xl ">&#10133;</button>
           <h1 className="text-3xl w-full text-white font-bold mx-1 p-4">
-            Nikaaal
+            Nikaaal {id}
           </h1>
           <ul className="flex m-4">
             <Link href={"#"}>

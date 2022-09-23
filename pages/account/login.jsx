@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import baseUrl from '../../util/baseUrl';
+import { useRouter } from "next/router";
 
 const Login = () => {
+
+  const router = useRouter();
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -78,7 +82,7 @@ const Login = () => {
     </div>
     <div className='justify-center flex  mb-5'>
         
-          <button onClick={handleLogin} class=" mt-4 bg-transparent text-slate-900 font-semibold  py-2 px-4 border border-black rounded">
+          <button onClick={handleLogin} className=" mt-4 bg-transparent text-slate-900 font-semibold  py-2 px-4 border border-black rounded">
               Login
           </button>
         

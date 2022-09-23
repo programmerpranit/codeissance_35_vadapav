@@ -19,7 +19,7 @@ const handler = async (req, res) => {
 
             res.status(201).json(token);
         } catch (error) {
-            res.status(400).json({ message: error });
+            res.status(500).json({ message: error });
         }
     }
 }

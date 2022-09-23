@@ -7,7 +7,7 @@ var CryptoJS = require('crypto-js');
 const handler = async (req, res) => {
 
     if (req.method == 'POST') {
-        const { email, password } = res.body;
+        const { email, password } = req.body;
         let user = await User.findOne({ email: email })
 
         if (user) {
