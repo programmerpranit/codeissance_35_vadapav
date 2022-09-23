@@ -3,6 +3,8 @@ import Link from "next/link";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import subjects from "../../components/Subjects";
 import Subjects from "../../components/Subjects";
+import Assignments from "../../components/Assignment";
+import Notice from "../../components/Notice";
 
 const index = () => {
   const slideLeft = () => {
@@ -51,10 +53,9 @@ const index = () => {
               >
                 <div>
                   <div className="m-2 p-3 flex">
-                  <Subjects />
-                  <Subjects/>
+                    <Subjects />
+                    <Subjects />
                   </div>
-
                 </div>
               </div>
               <MdChevronRight
@@ -66,10 +67,16 @@ const index = () => {
           </div>
           <div className="flex ">
             <div className="m-4 ">
-              <h1 className="text-3xl">Notice</h1>
-            </div>
-            <div className="m-4 ">
-              <h1 className="text-3xl">Assignments</h1>
+              <div>
+                <h1 className="text-2xl font-bold ml-5 border-b border-black">
+                  Notices:
+                </h1>
+                <Notice />
+                <Notice />
+                <Notice />
+                <Notice />
+                <Notice />
+              </div>
             </div>
           </div>
         </div>

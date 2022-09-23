@@ -3,22 +3,6 @@ import React from "react";
 
 const index = () => {
 
-  subjects = [{
-    
-    "teacherName" : "Suryavanshi",
-    "Subject": "TCS"
-  },
-  {
-    "teacherName" : "Suryavanshi",
-    "Subject": "TCS"
-  },
-  {
-    "teacherName" : "Suryavanshi",
-    "Subject": "TCS"
-  }
-
-]
-  
   return (
     <>
       <div className="flex justify-between items-center bg-black max-w mx-auto text-white ">
