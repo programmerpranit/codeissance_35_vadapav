@@ -1,7 +1,15 @@
 import Notice from "../../../model/Notice";
 import connectDb from "../../middleware/mongoose";
+import  Jwt  from "jsonwebtoken";
 
 const handler = async (req, res) => {
+
+    const token = req.body;
+    const user = Jwt.decode(token,"jwtsecret")
+
+    if(!user.teacher){
+        res.status(500).json({ message: "You are not a teacher" });
+    }
 
     if (req.method == 'POST') {
 
@@ -13,7 +21,7 @@ const handler = async (req, res) => {
             res.status(201).json({ message: "Notice Uploaded" })
 
         } catch (error) {
-            res.status(500).json({ message: "Some internal error occured try after some time" })
+            res.status(500).json({ message: error })
         }
 
     } else {

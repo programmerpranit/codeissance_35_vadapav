@@ -5,12 +5,12 @@ import connectDb from "../../../middleware/mongoose"
 var CryptoJS = require("crypto-js");
 
 const handler = async (req, res) => {
-    if (post.method == 'POST') {
+    if (req.method == 'POST') {
 
         const { name, email, role } = req.body;
 
         try {
-            let u = new User({ name, email, password: CryptoJS.AES.encrypt(req.body.password, 'secret123').toString() })
+            let u = new User({ name, email, password: CryptoJS.AES.encrypt(req.body.password,'secret123').toString() })
             await u.save();
             res.status(200).json({ message: "Account Created Successfully!" })
         } catch (error) {
