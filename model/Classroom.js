@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const ClassroomSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
-    teacher: { type: String, required: true },
+    teacherId: { type: String, required: true },
     teacherName: { type: String, required: true },
     students: [
       {
@@ -11,6 +11,7 @@ const ClassroomSchema = new mongoose.Schema(
         studentId: { type: String }
       }
     ],
+    semester: {type: Number, required: true}
   },
   { timestamps: true }
 );
