@@ -13,16 +13,16 @@ const handler = async (req, res) => {
     }
 
     if (req.method == 'POST') {
-        const { title, description, teacherId, teacherName, dueDate } = req.body;
+        const { title, description, dueDate, classroom } = req.body;
 
         try {
 
             let assignment = new Assignment({
-                title, description, teacherId, teacherName, dueDate
+                title, description, teacherId: user.id, teacherName:user.name, dueDate, classroom
             })
 
             await assignment.save()
-            return res.status(201).json(project);
+            return res.status(201).json(assignment);
 
 
         } catch (error) {
