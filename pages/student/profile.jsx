@@ -26,7 +26,7 @@ const Profile = () => {
             <img
               src={"https://dummyimage.com/600x400"}
               alt="Profile Image"
-              className="flex "
+              className="flex m-4"
             />
           </div>
           <div className="flex flex-col m-4 p-6 border-black">
@@ -37,7 +37,7 @@ const Profile = () => {
           </div>
         </div>
         <div>
-          gfgfd
+          
         </div>
       </div>
     </> 
