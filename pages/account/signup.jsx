@@ -35,7 +35,6 @@ const Signup = () => {
     };
     const fetchResponse = await fetch(`${baseUrl}/api/auth/signup`, settings);
     const response = await fetchResponse.json();
-    console.log(response)
 
     if (fetchResponse.status === 201) {
       localStorage.setItem("token", response);
@@ -49,8 +48,9 @@ const Signup = () => {
         draggable: true,
         progress: undefined,
       });
-
+      
       router.push("/student");
+      
     } else {
       toast.error(response.message);
     }
@@ -174,22 +174,3 @@ const Signup = () => {
 
 export default Signup;
 
-/*
-            <div>
-              <h3 className=" text-lg p-2 mb-1 mr-5">I am a ?</h3>
-              <input
-                type="radio"
-                name="role"
-                value={1}
-                className="m-5 text-lg text-black"
-              />
-              <label>Teacher</label>
-              <input
-                type="radio"
-                name="role"
-                value={0}
-                className="m-5 text-lg text-black"
-              />
-              <label>Student</label>
-            </div>
-*/
