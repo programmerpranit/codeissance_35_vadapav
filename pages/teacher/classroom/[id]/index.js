@@ -16,6 +16,43 @@ const Classroom = () => {
   const [desc, setDesc] = useState("")
   const [date, setDate] = useState()
 
+  const [assignments, setAssignments] = useState([])
+
+
+  const getAssignments = async () => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      router.push("/account/login");
+    }
+
+    var data = {
+      
+      classroom: id,
+      token: token
+    };
+
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(`${baseUrl}/api/assignment/all`, settings);
+    const response = await fetchResponse.json();
+
+    if (fetchResponse.status === 200) {
+
+
+      setAssignments(response)
+
+      // router.push(`/teacher/classroom/${response.id}`);
+      
+    } else {
+      console.error(response.message)
+    }
+  }
 
 
   const addAssignment = async () => {
@@ -26,9 +63,9 @@ const Classroom = () => {
     }
 
     var data = {
-      title: className,
-      description: semester,
-      dueDate: "didsi",
+      title: name,
+      description: desc,
+      dueDate: date,
       classroom: id,
       token: token
     };
@@ -85,6 +122,7 @@ const Classroom = () => {
   useEffect(() => {
  
     validate();
+    getAssignments();
 
   }, [])
 
@@ -117,7 +155,6 @@ const Classroom = () => {
           </ul>
         </div>
       </div>
-      {id}
 
       <div className="flex flex-col m-4 p-4 mx-auto border-black border-2 rounded-md w-3/6">
         <h1 className="text-2xl">Add assignment</h1>
@@ -143,6 +180,7 @@ const Classroom = () => {
           placeholder="Set Due Date"
           name="dueDate"
           onChange={(e)=>{
+            console.log(e.target.value)
             setDate(e.target.value)
           }}
         />
@@ -151,36 +189,22 @@ const Classroom = () => {
         </button>
         
       </div>
-      <div className="border-black border-2 mx-auto bg-[#d1d5db] rounded-md m-4 mt-6 p-2 w-4/6">
-          <h1 className="text-xl font-bold p-2" >Assignment Name</h1>
-          <h1 className="p-2">Due date</h1>
-          <p className="p-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-          </p>
-        </div>
-        <div className="border-black border-2 mx-auto bg-[#d1d5db] rounded-md m-4 mt-6 p-2  w-4/6">
-          <h1 className="text-xl font-bold p-2" >Assignment Name</h1>
-          <h1 className="p-2">Due date</h1>
-          <p className="p-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-          </p>
-        </div>
-        <div className="border-black border-2 mx-auto bg-[#d1d5db] rounded-md m-4 mt-6 p-2  w-4/6">
-          <h1 className="text-xl font-bold p-2" >Assignment Name</h1>
-          <h1 className="p-2">Due date</h1>
-          <p className="p-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-          </p>
-        </div>
+
+
+          { assignments && assignments.map((a)=>(
+            <div key={a._id} className="border-black border-2 mx-auto bg-[#d1d5db] rounded-md m-4 mt-6 p-2 w-4/6">
+            <h1 className="text-xl font-bold p-2" >{a.title}</h1>
+            <h1 className="p-2">{a.dueDate}</h1>
+            <p className="p-2">
+              {a.description}
+            </p>
+          </div>
+          ))
+
+          }
+
+
+
 </div>
   }
     </>
