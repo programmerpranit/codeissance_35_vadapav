@@ -9,7 +9,7 @@ const handler = async (req, res) => {
     const user = jwt.decode(token, "jwtsecret");
 
     if (!user.teacher) {
-        return res.status(401).json({ message: "You are not superuser" });
+        return res.status(401).json({ message: "You are not teacher" });
     }
 
     if (req.method == 'POST') {
