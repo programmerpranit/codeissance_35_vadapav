@@ -7,6 +7,7 @@ import baseUrl from "../../util/baseUrl";
 import Notice from "../../components/Notice";
 
 import { useRouter } from "next/router";
+import Navbar from "../../components/Navbar";
 
 const StudentDashboard = () => {
   const router = useRouter();
@@ -63,6 +64,23 @@ const StudentDashboard = () => {
       <div>
         <div>
           {/* navigation bar */}
+          <div className="flex justify-between items-center bg-black max-w mx-auto text-white ">
+        <h1 className="text-3xl w-full text-white font-bold mx-1 p-4">
+          Nikaaal!
+        </h1>
+        <ul className="flex m-4">
+          <Link href={"/"}>
+            <li className="p-4 ">Home</li>
+          </Link>
+          <Link href={"/"}>
+            <li className="p-4 ">Report</li>
+          </Link>
+          <Link href={"/"}>
+            <li className="p-4 ">Logout</li>
+          </Link>
+        </ul>
+      </div>
+          
 
           {/* classes */}
           <div className=" bg-[#ddd6fe] ">
