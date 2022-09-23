@@ -27,10 +27,21 @@ const Students = () => {
       </div>
       <div>
         <div className="">
-        <h1 className="text-3xl border-b-2 m-2.5 p-2.5  border-black text-center font-bold">Students</h1>
+        <h1 className="text-5xl border-b-2 m-2.5 p-2.5  border-black text-center font-bold">Students</h1>
         </div>
         <div>
-
+          <div>
+            <h1 className="border-black border-2 text-lg m-4 p-2 rounded-md w-3/6 mx-auto" >Student name</h1>
+          </div>
+          <div>
+            <h1 className="border-black border-2 text-lg m-4 p-2 rounded-md w-3/6 mx-auto">Student name</h1>
+          </div>
+          <div>
+            <h1 className="border-black border-2  text-lg m-4 p-2 rounded-md w-3/6 mx-auto" >Student name</h1>
+          </div>
+          <div>
+            <h1 className="border-black border-2  text-lg m-4 p-2 rounded-md w-3/6 mx-auto">Student name</h1>
+          </div>
         </div>
       </div>
     </>
