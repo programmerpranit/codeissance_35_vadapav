@@ -25,13 +25,26 @@ const Classroom = () => {
           </ul>
         </div>
       </div>
-      <div className="max-w bg-slate-400 h-full">
-      <div>
-        
+      
+      <div className="flex flex-col m-4 p-4 mx-auto border-black border-2 rounded-md w-3/6">
+        <h1 className="text-2xl">Add assignment</h1>
+        <input
+                className=" border-black border rounded-sm p-2 mt-4 w-full "
+                placeholder="Assignment Name"
+                name="emailAddress"
+        />
+        <input
+                className=" border-black border rounded-sm p-2 mt-4 w-full h-20"
+                placeholder="Assignment description"
+                name="emailAddress"
+        />
+        <button className="border-black border-2 m-4 rounded-md w-2/5 p-2 mx-auto">
+          Add assignment
+        </button>
       </div>
       
 
-      </div>
+      
     </>
   );
 };
