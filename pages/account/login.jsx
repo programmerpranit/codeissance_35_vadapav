@@ -64,7 +64,7 @@ const Login = () => {
         pauseOnHover
       />
 
-  <div className='flex justify-center bg-transparent  border-black border-2 m-6 rounded-lg flex-col w-min'>
+  <div className='flex align-middle justify-center bg-transparent  border-black border-2 m-6 rounded-lg flex-col w-min mx-auto mt-40'>
     <h1 className='text-slate-900 rounded-md text-3xl m-5 p-2'>Login</h1>
     <div className='flex-col ml-5 mb-5'>
       <div className=''>
@@ -86,6 +86,9 @@ const Login = () => {
               Login
           </button>
         
+    </div>
+    <div className="m-4 mx-auto">
+      <h1>Don't have an account?{" "} <a className="text-green-900 hover:text-blue-800" href={""}>SignUp</a>  </h1>
     </div>
   </div>
    
