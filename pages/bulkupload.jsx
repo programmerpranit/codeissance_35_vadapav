@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import Papa from "papaparse";
- 
+
 // Allowed extensions for input file
 const allowedExtensions = ["csv"];
- 
+
 const BulkUpload = () => {
-     
+
     // This state will store the parsed data
     const [data, setData] = useState([]);
-     
+
     // It state will contain the error when
     // correct file extension is not used
     const [error, setError] = useState("");
-     
+
     // It will store the file uploaded by the user
     const [file, setFile] = useState("");
- 
+
     // This function will be called when
     // the file input changes
     const handleFileChange = (e) => {
         setError("");
-         
+
         // Check if user has entered the file
         if (e.target.files.length) {
             const inputFile = e.target.files[0];
-             
+
             // Check the file extensions, if it not
             // included in the allowed extensions
             // we show the error
@@ -33,21 +33,21 @@ const BulkUpload = () => {
                 setError("Please input a csv file");
                 return;
             }
- 
+
             // If input type is correct set the state
             setFile(inputFile);
         }
     };
     const handleParse = () => {
-         
+
         // If user clicks the parse button without
         // a file we show a error
         if (!file) return setError("Enter a valid file");
- 
+
         // Initialize a reader which allows user
         // to read any file or blob.
         const reader = new FileReader();
-         
+
         // Event listener on reader when the file
         // loads, we parse it and set the data.
         reader.onload = async ({ target }) => {
@@ -59,23 +59,27 @@ const BulkUpload = () => {
         };
         reader.readAsText(file);
     };
- 
+
     return (
-        <div>
-            <label htmlFor="csvInput" style={{ display: "block" }}>
+        <div className="bg-transparent flex flex-col items-center align-center border-black border-2 mx-auto w-2/6 my-20 rounded-lg">
+            <label htmlFor="csvInput" className="items-center text-2xl font-medium mx-10 my-8" style={{ display: "block" }}>
                 Enter CSV File
             </label>
             <input
+                className="items-center font-2xl mx-10 my-10"
                 onChange={handleFileChange}
                 id="csvInput"
                 name="file"
                 type="file"
             />
-            <div className="my-5"> 
-                <button onClick={handleParse}>Parse</button>
+            <div className="items-center text-2xl bg-gray-300 p-2 rounded-lg font-medium mx-10 my-5 border-black border-2 hover:bg-gray-400">
+                <button className="{
+                 outline: 1px dotted;
+                 outline: 5px auto -webkit-focus-ring-color;
+                 }" onClick={handleParse}>Parse</button>
             </div>
         </div>
     );
 };
- 
+
 export default BulkUpload;
