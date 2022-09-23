@@ -5,12 +5,19 @@ import Subjects from "../../components/Subjects";
 import Assignments from "../../components/Assignment"
 import baseUrl from "../../util/baseUrl";
 import Notice from "../../components/Notice"
+
+
 import { useRouter } from "next/router";
 
 const StudentDashboard = () => {
   const router = useRouter();
 
   const [notices, setNotices] = useState([])
+<<<<<<< HEAD
+=======
+
+// import {IoIosAdd }from "react-icons/IoIosAdd"
+>>>>>>> e93e51d3e57b4799ec1f4289f0c8d314325d7f48
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
