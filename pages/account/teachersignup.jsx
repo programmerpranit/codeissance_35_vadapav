@@ -7,9 +7,43 @@ const TeacherSignup = () => {
     password: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(user);
+  const handleSubmit = async () => {
+    var data = {
+      name: user.fullName,
+      email: user.emailAddress,
+      password: user.password,
+      role: true,
+    };
+
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(`${baseUrl}/api/auth/signup`, settings);
+    const response = await fetchResponse.json();
+    console.log(response)
+
+    if (fetchResponse.status === 201) {
+      localStorage.setItem("token", response);
+      // setUser(response);
+      toast.success(response.message, {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      router.push("/teacher");
+    } else {
+      toast.error(response.message);
+    }
   };
 
   return (
@@ -27,7 +61,7 @@ const TeacherSignup = () => {
                 placeholder="Enter Full Name"
                 name="fullName"
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, fullName: e.target.value });
                 }}
               />
             </div>
@@ -39,7 +73,7 @@ const TeacherSignup = () => {
                 name="emailAddress"
                 type={"email"}
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, emailAddress: e.target.value });
                 }}
               />
             </div>
@@ -53,7 +87,7 @@ const TeacherSignup = () => {
                 name="password"
                 type={"password"}
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, password: e.target.value });
                 }}
               />
             </div>
