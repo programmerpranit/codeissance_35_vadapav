@@ -25,9 +25,9 @@ const Classroom = () => {
       router.push("/account/login");
     }
 
+
     var data = {
-      
-      classroom: id,
+      cid: id,
       token: token
     };
 
@@ -42,7 +42,7 @@ const Classroom = () => {
     const fetchResponse = await fetch(`${baseUrl}/api/assignment/all`, settings);
     const response = await fetchResponse.json();
 
-    if (fetchResponse.status === 200) {
+    if (fetchResponse.status == 200) {
 
       console.log(response)
 
@@ -156,6 +156,8 @@ const Classroom = () => {
           </ul>
         </div>
       </div>
+
+      Class Id = {id}
 
       <div className="flex flex-col m-4 p-4 mx-auto border-black border-2 rounded-md w-3/6">
         <h1 className="text-2xl">Add assignment</h1>

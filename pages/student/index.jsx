@@ -7,14 +7,14 @@ import baseUrl from "../../util/baseUrl";
 import Notice from "../../components/Notice";
 
 import { useRouter } from "next/router";
-import Navbar from "../../components/Navbar";
-import assignment from "../api/assignment";
 
 const StudentDashboard = () => {
   const router = useRouter();
 
   const [notices, setNotices] = useState([]);
   const [assignments, setAssignments] = useState([]);
+  const [classRooms, setClassRooms] = useState([]);
+  const [classId, setClassId] = useState("")
 
   // import {IoIosAdd }from "react-icons/IoIosAdd"
 
@@ -27,6 +27,35 @@ const StudentDashboard = () => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 500;
   };
+
+  const fetchClassrooms = async () => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      router.push("/account/login");
+    }
+
+    var data = {
+      token: token,
+    };
+
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(
+      `${baseUrl}/api/classroom/student`,
+      settings
+    );
+    const response = await fetchResponse.json();
+    console.log(response);
+    if (fetchResponse.status == 200) {
+      setClassRooms(response);
+    }
+  }
 
   const fetchAssignments = async () => {
     const token = localStorage.getItem("token");
@@ -86,9 +115,40 @@ const StudentDashboard = () => {
     }
   };
 
+  const enroll = async () => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      router.push("/account/login");
+    }
+
+    var data = {
+      token: token,
+      id: classId
+    };
+
+    const settings = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(
+      `${baseUrl}/api/classroom/enroll`,
+      settings
+    );
+    const response = await fetchResponse.json();
+    console.log(response);
+    if (fetchResponse.status == 201) {
+      console.log("Enrolled Successfully")
+    }
+  }
+
   useEffect(() => {
     fetchNotices();
     fetchAssignments();
+    fetchClassrooms();
   }, []);
 
   return (
@@ -113,6 +173,20 @@ const StudentDashboard = () => {
             </ul>
           </div>
 
+
+          <div className="">
+
+          <input type="text" onChange={(e)=>{
+            setClassId(e.target.value)
+          }} />
+
+          <button className="p-3 bg-slate-700" onClick={enroll}>Enroll</button>
+
+
+          </div>
+
+
+
           {/* classes */}
           <div className=" bg-[#ddd6fe] ">
             <div className="relative flex  w-full items-center group">
@@ -127,10 +201,14 @@ const StudentDashboard = () => {
               >
                 <div>
                   <div className="m-2 p-3 flex">
-                    <Subjects />
-                    <Subjects />
-                    <Subjects />
-                    <Subjects />
+
+                  {classRooms && classRooms.map((c)=>(
+                    <div key={c._id} >
+
+                    <Subjects sub={c.title} teacher={c.teacherName} />
+                    </div>
+                  ))}
+                    
                   </div>
                 </div>
               </div>
@@ -150,12 +228,16 @@ const StudentDashboard = () => {
 
                 {notices &&
                   notices.map((notice) => (
+                    <div key={notice._id}> 
+
                     <Notice
-                      title={notice.title}
-                      description={notice.description}
-                      classroom={notice.classroom}
-                      teacher={teacher.classroom}
+                    
+                    title={notice.title}
+                    description={notice.description}
+                    classroom={notice.classroom}
+                    teacher={teacher.classroom}
                     />
+                    </div>
                   ))}
               </div>
             </div>
@@ -169,11 +251,15 @@ const StudentDashboard = () => {
 
                 {notices &&
                   assignments.map((assignment) => (
+                    <div key={assignment._id}>
+
                     <Assignment
-                      title={assignment.title}
-                      dueDate={assignment.dueDate}
-                      description={assignment.description}
+                    
+                    title={assignment.title}
+                    dueDate={assignment.dueDate}
+                    description={assignment.description}
                     />
+                    </div>
                   ))}
               </div>
             </div>

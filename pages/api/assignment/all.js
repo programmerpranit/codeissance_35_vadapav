@@ -14,11 +14,13 @@ const handler = async (req, res) => {
 
     if (req.method == 'POST') {
 
-        const { classroom } = req.body;
+        const { cid } = req.body;
+        console.log(cid)
 
         try {
 
-            let assignments = await Assignment.find({classroom: classroom})
+            let assignments = await Assignment.find({classroom: cid})
+            console.log(assignments)
             return res.status(200).json(assignments);
 
 

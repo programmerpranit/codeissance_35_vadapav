@@ -225,9 +225,13 @@ const TeacherDashboard = () => {
 
                   {classRooms && classRooms.map((c)=> (
 
-                    <Link key={c._id} href={`/teacher/classroom/${c._id}`} className="cursor-pointer">
+                    <Link key={c._id} passHref={true}  href={`/teacher/classroom/${c._id}`} className="cursor-pointer">
 
-                    <Classes  title={c.title} sem={c.semester} />
+                    <div>
+
+
+                    <Classes   title={c.title} sem={c.semester} />
+                    </div>
                     </Link>
                   ))}
 
