@@ -17,7 +17,7 @@ const handler = async (req, res) => {
                 'jwtsecret',
                 { expiresIn: "30d" })
 
-            res.status(201).json({ Message: "Account Created Successfully" }, token);
+            res.status(201).json(token);
         } catch (error) {
             res.status(400).json({ message: error });
         }

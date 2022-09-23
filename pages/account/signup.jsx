@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import baseUrl from "../../util/baseUrl";
 
 const Signup = () => {
+  const router = useRouter();
+
   const [user, setUser] = useState({
     fullName: "",
     emailAddress: "",
@@ -11,13 +17,59 @@ const Signup = () => {
     password: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(user);
+  const handleSubmit = async () => {
+    var data = {
+      name: user.fullName,
+      email: user.emailAddress,
+      password: user.password,
+      role: false,
+    };
+
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(`${baseUrl}/api/auth/signup`, settings);
+    const response = await fetchResponse.json();
+    console.log(response)
+
+    if (fetchResponse.status === 201) {
+      localStorage.setItem("token", response);
+      // setUser(response);
+      toast.success(response.message, {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      router.push("/student");
+    } else {
+      toast.error(response.message);
+    }
   };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <div className="flex justify-center">
         <div className=" bg-transparent border-black border-2 m-6 rounded-lg flex-col w-min ">
           <h1 className="text-3xl m-5 text-slate-900 rounded-md p-2">
@@ -31,7 +83,7 @@ const Signup = () => {
                 placeholder="Enter Full Name"
                 name="fullName"
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, fullName: e.target.value });
                 }}
               />
             </div>
@@ -43,7 +95,7 @@ const Signup = () => {
                 name="emailAddress"
                 type={"email"}
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, emailAddress: e.target.value });
                 }}
               />
             </div>
@@ -55,7 +107,7 @@ const Signup = () => {
                 name="branch"
                 type={"text"}
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, branch: e.target.value });
                 }}
               />
             </div>
@@ -67,7 +119,7 @@ const Signup = () => {
                 name="year"
                 type={"text"}
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, year: e.target.value });
                 }}
               />
             </div>
@@ -78,7 +130,7 @@ const Signup = () => {
                 placeholder="PRN Number"
                 name="prnno"
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, prnno: e.target.value });
                 }}
               />
             </div>
@@ -90,7 +142,7 @@ const Signup = () => {
                 name="password"
                 type={"password"}
                 onChange={(e) => {
-                  setUser({ ...user, [e.target.name]: [e.target.value] });
+                  setUser({ ...user, password: e.target.value });
                 }}
               />
             </div>
