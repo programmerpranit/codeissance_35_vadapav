@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const teachersignup = () => {
+const TeacherSignup = () => {
   const [user, setUser] = useState({
     fullName: "",
     emailAddress: "",
@@ -73,4 +73,4 @@ const teachersignup = () => {
   );
 };
 
-export default teachersignup
+export default TeacherSignup

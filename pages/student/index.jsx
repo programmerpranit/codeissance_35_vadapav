@@ -13,8 +13,11 @@ const StudentDashboard = () => {
   const router = useRouter();
 
   const [notices, setNotices] = useState([])
+<<<<<<< HEAD
+=======
 
 // import {IoIosAdd }from "react-icons/IoIosAdd"
+>>>>>>> e93e51d3e57b4799ec1f4289f0c8d314325d7f48
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
@@ -48,9 +51,7 @@ const StudentDashboard = () => {
     const response = await fetchResponse.json();
     console.log(response)
     if (fetchResponse.status == 200) {
-      setNotices(response)
-
-      
+      setNotices(response)      
     }
   }
 
