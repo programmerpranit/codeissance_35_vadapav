@@ -21,7 +21,7 @@ const handler = async (req, res) => {
                     'jwtsecret',
                     { expiresIn: "30d" })
 
-                res.status(200).json({ Message: "Login Successfull" }, token);
+                res.status(200).json(token);
             }
             else {
                 res.status(400).json({ message: "Invalid Credentials" });
