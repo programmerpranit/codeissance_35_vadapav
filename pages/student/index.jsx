@@ -2,22 +2,18 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Subjects from "../../components/Subjects";
-import Assignments from "../../components/Assignment"
+import Assignments from "../../components/Assignment";
 import baseUrl from "../../util/baseUrl";
-import Notice from "../../components/Notice"
-
+import Notice from "../../components/Notice";
 
 import { useRouter } from "next/router";
 
 const StudentDashboard = () => {
   const router = useRouter();
 
-  const [notices, setNotices] = useState([])
-<<<<<<< HEAD
-=======
+  const [notices, setNotices] = useState([]);
 
-// import {IoIosAdd }from "react-icons/IoIosAdd"
->>>>>>> e93e51d3e57b4799ec1f4289f0c8d314325d7f48
+  // import {IoIosAdd }from "react-icons/IoIosAdd"
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
@@ -47,28 +43,26 @@ const StudentDashboard = () => {
       },
       body: JSON.stringify(data),
     };
-    const fetchResponse = await fetch(`${baseUrl}/api/notice/student`, settings);
+    const fetchResponse = await fetch(
+      `${baseUrl}/api/notice/student`,
+      settings
+    );
     const response = await fetchResponse.json();
-    console.log(response)
+    console.log(response);
     if (fetchResponse.status == 200) {
-      setNotices(response)      
+      setNotices(response);
     }
-  }
-
+  };
 
   useEffect(() => {
-
     fetchNotices();
-    
-  }, [])
-  
+  }, []);
 
   return (
     <>
       <div>
         <div>
           {/* navigation bar */}
-          
 
           {/* classes */}
           <div className=" bg-[#ddd6fe] ">
@@ -103,14 +97,14 @@ const StudentDashboard = () => {
                   Notices:
                 </h1>
 
-              { notices && notices.map((notice)=>(
-                <Notice teacherName={notice.uploadedby} key={notice._id} title={notice.title} />
-              ))
-
-              }
-
-
-                
+                {notices &&
+                  notices.map((notice) => (
+                    <Notice
+                      teacherName={notice.uploadedby}
+                      key={notice._id}
+                      title={notice.title}
+                    />
+                  ))}
               </div>
             </div>
           </div>
