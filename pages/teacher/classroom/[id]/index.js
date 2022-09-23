@@ -26,7 +26,9 @@ const Classroom = () => {
         </div>
       </div>
       <div className="max-w bg-slate-400 h-full">
-
+      <div>
+        
+      </div>
       
 
       </div>
