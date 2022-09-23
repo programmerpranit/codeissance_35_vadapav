@@ -5,14 +5,15 @@ import Subjects from "../../components/Subjects";
 import Assignments from "../../components/Assignment"
 import baseUrl from "../../util/baseUrl";
 import Notice from "../../components/Notice"
+
+
 import { useRouter } from "next/router";
 
 const StudentDashboard = () => {
   const router = useRouter();
 
   const [notices, setNotices] = useState([])
-import Assignments from "../../components/Assignment";
-import Notice from "../../components/Notice";
+
 // import {IoIosAdd }from "react-icons/IoIosAdd"
 
   const slideLeft = () => {
