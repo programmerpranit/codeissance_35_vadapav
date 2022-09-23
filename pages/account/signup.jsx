@@ -35,7 +35,6 @@ const Signup = () => {
     };
     const fetchResponse = await fetch(`${baseUrl}/api/auth/signup`, settings);
     const response = await fetchResponse.json();
-    console.log(response)
 
     if (fetchResponse.status === 201) {
       localStorage.setItem("token", response);
@@ -49,8 +48,9 @@ const Signup = () => {
         draggable: true,
         progress: undefined,
       });
-
+      
       router.push("/student");
+      
     } else {
       toast.error(response.message);
     }
