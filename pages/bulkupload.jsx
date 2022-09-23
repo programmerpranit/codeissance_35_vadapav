@@ -61,7 +61,7 @@ const BulkUpload = () => {
     };
 
     return (
-        <div className="bg-transparent flex flex-col items-center align-center border-black border-2 mx-auto w-2/6 my-20 rounded-lg">
+        <div className="bg-transparent flex flex-col items-center align-center mt-48 border-black border-2 mx-auto w-2/6 my-20 rounded-lg">
             <label htmlFor="csvInput" className="items-center text-2xl font-medium mx-10 my-8" style={{ display: "block" }}>
                 Enter CSV File
             </label>
@@ -72,11 +72,39 @@ const BulkUpload = () => {
                 name="file"
                 type="file"
             />
+
+            <div className="flex flex-row space-x-4 text-xl">
+
+                <input
+                    type="radio"
+                    name="radiobtn"
+                    value="ia1"
+                />
+                <label for="radio-btn">IA-1</label>
+
+                <input
+                    type="radio"
+                    name="radiobtn"
+                    value="ia2"
+                />
+                <label for="radio-btn">IA-2</label>
+
+                <input
+                    type="radio"
+                    name="radiobtn"
+                    value="sem"
+                />
+                <label for="radio-btn">Semester</label>
+
+
+            </div>
+
+
             <div className="items-center text-2xl bg-gray-300 p-2 rounded-lg font-medium mx-10 my-5 border-black border-2 hover:bg-gray-400">
                 <button className="{
                  outline: 1px dotted;
                  outline: 5px auto -webkit-focus-ring-color;
-                 }" onClick={handleParse}>Parse</button>
+                 }" onClick={handleParse}>Submit</button>
             </div>
         </div>
     );
