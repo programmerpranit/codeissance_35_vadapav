@@ -11,6 +11,9 @@ const StudentDashboard = () => {
   const router = useRouter();
 
   const [notices, setNotices] = useState([])
+import Assignments from "../../components/Assignment";
+import Notice from "../../components/Notice";
+// import {IoIosAdd }from "react-icons/IoIosAdd"
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
