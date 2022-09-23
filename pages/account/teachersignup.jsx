@@ -33,15 +33,6 @@ const TeacherSignup = () => {
     if (fetchResponse.status === 201) {
       localStorage.setItem("token", response);
       // setUser(response);
-      toast.success(response.message, {
-        position: "top-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
 
       router.push("/teacher");
     } else {

@@ -44,6 +44,7 @@ const Classroom = () => {
 
     if (fetchResponse.status === 200) {
 
+      console.log(response)
 
       setAssignments(response)
 
@@ -202,8 +203,6 @@ const Classroom = () => {
           ))
 
           }
-
-
 
 </div>
   }

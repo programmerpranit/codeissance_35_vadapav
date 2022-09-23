@@ -14,6 +14,8 @@ const TeacherDashboard = () => {
 
   const [teacher, setTeacher] = useState(false)
 
+  const [classRooms, setClassRooms] = useState([])
+
 
   const handleCreate = async () => {
 
@@ -47,6 +49,42 @@ const TeacherDashboard = () => {
       console.error(response.message)
     }
   }
+
+
+  const getClassrooms = async () => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      router.push("/account/login");
+    }
+
+    var data = {
+      token: token
+    };
+
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(`${baseUrl}/api/classroom/teacherclassrooms`, settings);
+    const response = await fetchResponse.json();
+
+    if (fetchResponse.status === 200) {
+
+      console.log(response)
+
+      setClassRooms(response.classrooms)
+      // router.push(`/teacher/classroom/${response.id}`);
+      
+    } else {
+      console.error(response.message)
+    }
+  }
+
+
 
   const validate = async () => {
     const token = localStorage.getItem("token");
@@ -90,6 +128,8 @@ const TeacherDashboard = () => {
   useEffect(() => {
  
     validate();
+
+    getClassrooms();
 
   }, [])
   
@@ -181,11 +221,16 @@ const TeacherDashboard = () => {
         >
           <div>
             <div className="m-2 p-3 flex">
-            <Classes/>
-            <Classes/>
-            <Classes/>
-            <Classes/>
-            <Classes/>
+
+
+                  {classRooms && classRooms.map((c)=> (
+
+                    <Link key={c._id} href={`/teacher/classroom/${c._id}`} className="cursor-pointer">
+
+                    <Classes  title={c.title} sem={c.semester} />
+                    </Link>
+                  ))}
+
 
             </div>
           </div>

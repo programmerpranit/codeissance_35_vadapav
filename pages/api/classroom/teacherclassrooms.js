@@ -15,12 +15,11 @@ const handler = async (req, res) => {
 
     if (req.method == 'POST') {
         
-        const { title, semester } = req.body;
         try {
             
-            let classroom = new Classroom({ title, teacherId:user.id, teacherName: user.name, semester });
-            await classroom.save();
-            res.status(201).json({ message: "Classroom created successfully!", id: classroom._id })
+            let classrooms = await Classroom.find({teacherId:user.id});
+            
+            res.status(200).json({  classrooms:classrooms })
 
         } catch (error) {
             console.log(error)
