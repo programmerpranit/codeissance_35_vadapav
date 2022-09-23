@@ -17,4 +17,4 @@ const ClassroomSchema = new mongoose.Schema(
 
 mongoose.models = {};
 
-export default mongoose.model("Project", ProjectSchema);
+export default mongoose.model("Classroom", ClassroomSchema);
