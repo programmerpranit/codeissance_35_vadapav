@@ -6,6 +6,7 @@ const AssignmentSchema = new mongoose.Schema({
     teacherId: { type: String, required: true },
     teacherName: { type: String, required: true },
     dueDate: {type: Date, required: true},
+    classroom: {type: String, required: true},
     submissions: [
       {
         studentName: { type: String, required: true },

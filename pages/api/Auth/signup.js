@@ -18,10 +18,8 @@ const handler = async (req, res) => {
                 { expiresIn: "30d" })
 
             res.status(201).json({ Message: "Account Created Successfully" }, token);
-            console.log(token);
         } catch (error) {
             res.status(400).json({ message: error });
-            console.log(error);
         }
     }
 }
