@@ -1,6 +1,6 @@
-import User from "../../../models/User"
+import User from "../../../model/User"
 import connectDb from "../../../middleware/mongoose"
-
+import  jwt  from "jsonwebtoken";
 // var AES = require("crypto-js/aes");
 var CryptoJS = require("crypto-js");
 
@@ -10,11 +10,18 @@ const handler = async (req, res) => {
         const { name, email, role } = req.body;
 
         try {
-            let u = new User({ name, email, password: CryptoJS.AES.encrypt(req.body.password,'secret123').toString(), teacher:role })
-            await u.save();
-            res.status(200).json({ message: "Account Created Successfully!" })
+            let user = new User({ name, email, password: CryptoJS.AES.encrypt(req.body.password,'secret123').toString(), teacher:role })
+            await user.save();
+            var token = jwt.sign(
+                { name: user.name, email: user.email, teacher: user.teacher, id: user._id },
+                'jwtsecret',
+                { expiresIn: "30d" })
+
+            res.status(201).json({ Message: "Account Created Successfully" }, token);
+            console.log(token);
         } catch (error) {
-            res.status(400).json({ message: "Unexpected Error" })
+            res.status(400).json({ message: error });
+            console.log(error);
         }
     }
 }

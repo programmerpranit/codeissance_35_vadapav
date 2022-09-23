@@ -1,6 +1,6 @@
 import User from "../../../model/User";
 import connectDb from "../../../middleware/mongoose";
-import jwt from jsonWebToken;
+import jwt from "jsonWebToken";
 // var AES = require('crypto-js/aes');
 var CryptoJS = require('crypto-js');
 

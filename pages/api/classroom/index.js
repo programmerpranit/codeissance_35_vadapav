@@ -1,11 +1,11 @@
 import Classroom from "../../../model/Classroom";
 import connectDb from "../../middleware/mongoose";
-import  Jwt  from "jsonwebtoken";
+import  jwt  from "jsonwebtoken";
 
 const handler = async (req, res) => {
 
     const token = req.body
-    const user =  Jwt.decode(token,"jwtsecret");
+    const user =  jwt.decode(token,"jwtsecret");
 
     if (!user.teacher) {
         return res.status(401).json({ message: "You are not Teacher" });
