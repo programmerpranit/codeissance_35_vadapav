@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
-<<<<<<< HEAD
 import { useRouter } from 'next/router'
+import Notice from '../../../../components/Notice'
 
 const Notices = () => {
 
@@ -9,21 +9,6 @@ const Notices = () => {
   const { id } = router.query
     
 
-=======
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import Notice from "../../../../components/Notice";
-
-const Notices = () => {
-  const slideLeft = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 500;
-  };
-
-  const slideRight = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 500;
-  };
->>>>>>> 09e6a86fd939fe99cfe5ef4ba8c6b4ed92c35068
   return (
     <>
       <div>
