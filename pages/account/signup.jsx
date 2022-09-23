@@ -20,7 +20,7 @@ const Signup = () => {
           </div>
           <div>
             <h3 className=' text-lg p-2 mb-1 mr-5'>I am a ?</h3>
-            <input className=' border-black border rounded-sm w-96 p-2 ml-2' placeholder='Enter Password' />
+            <input className=' border-black border rounded-sm w-96 p-2 ml-2' />
           </div>
         </div>
         <div className='justify-center flex  mb-5'>

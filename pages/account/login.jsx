@@ -16,11 +16,11 @@ const Login = () => {
     </div>
     </div>
     <div className='justify-center flex  mb-5'>
-        <Link href={'/todos'}>
+        
           <button class=" mt-4 bg-transparent text-slate-900 font-semibold  py-2 px-4 border border-black rounded">
               Login
           </button>
-        </Link>
+        
     </div>
   </div>
    
