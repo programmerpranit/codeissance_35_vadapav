@@ -29,12 +29,15 @@ const Profile = () => {
               className="flex "
             />
           </div>
-          <div className="flex flex-col m-4 p-6">
-            <h1 className="p-4 text-lg">Student name</h1>
+          <div className="flex flex-col m-4 p-6 border-black">
+            <h1 className="p-4 text-3xl">Student name</h1>
             <h1 className="p-4 text-lg">Branch</h1>
             <h1 className="p-4 text-lg">Year </h1>
             <h1 className="p-4 text-lg">Prn no </h1>
           </div>
+        </div>
+        <div>
+          gfgfd
         </div>
       </div>
     </> 
