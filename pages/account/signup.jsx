@@ -112,6 +112,9 @@ const Signup = () => {
             </h1>
           </Link>
         </div>
+        <div>
+          <img src="" />
+        </div>
       </div>
     </>
   );
