@@ -20,7 +20,10 @@ const Signup = () => {
           </div>
           <div>
             <h3 className=' text-lg p-2 mb-1 mr-5'>I am a ?</h3>
-            <input className=' border-black border rounded-sm w-96 p-2 ml-2' />
+            <input type="radio" name="role" value={1} className='m-5 text-lg text-black' />
+            <label>Teacher</label>
+            <input type="radio" name="role" value={0} className='m-5 text-lg text-black' />
+            <label>Student</label>
           </div>
         </div>
         <div className='justify-center flex  mb-5'>
