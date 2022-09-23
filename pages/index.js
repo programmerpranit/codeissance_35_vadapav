@@ -21,8 +21,8 @@ export default function Home() {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
-        <div className='flex'>
-        <Link href={"/account/signup"}>
+        <div className="flex">
+          <Link href={"/account/signup"}>
             <button className="text-lg  p-4 rounded-md m-2 text-black border-2 border-black">
               Sign Up!
             </button>
@@ -33,10 +33,8 @@ export default function Home() {
               Login
             </button>
           </Link>
-
         </div>
-
-        </div>
+      </div>
     </>
   );
 }
