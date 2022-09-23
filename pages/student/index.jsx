@@ -5,6 +5,7 @@ import subjects from "../../components/Subjects";
 import Subjects from "../../components/Subjects";
 import Assignments from "../../components/Assignment";
 import Notice from "../../components/Notice";
+// import {IoIosAdd }from "react-icons/IoIosAdd"
 
 const index = () => {
   const slideLeft = () => {
