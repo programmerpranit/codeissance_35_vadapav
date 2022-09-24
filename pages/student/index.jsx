@@ -250,11 +250,16 @@ const StudentDashboard = () => {
                 {notices &&
                   assignments.map((assignment) => (
                     <div key={assignment._id}>
+                      <Link href={`/student/assignment/${assignment._id}`}>
+                        <div>
+
                       <Assignment
                         title={assignment.title}
                         dueDate={assignment.dueDate}
                         description={assignment.description}
-                      />
+                        />
+                        </div>
+                        </Link>
                     </div>
                   ))}
               </div>

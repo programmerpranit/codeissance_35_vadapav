@@ -25,7 +25,6 @@ const Classroom = () => {
       router.push("/account/login");
     }
 
-
     var data = {
       cid: id,
       token: token
