@@ -17,6 +17,13 @@ const Classroom = () => {
   const [date, setDate] = useState()
 
   const [assignments, setAssignments] = useState([])
+  
+  useEffect(() => {
+    validate();
+ 
+    getAssignments();
+
+  }, [])
 
 
   const getAssignments = async () => {
@@ -119,12 +126,6 @@ const Classroom = () => {
     }
   }
 
-  useEffect(() => {
- 
-    validate();
-    getAssignments();
-
-  }, [])
 
   return (
     <>

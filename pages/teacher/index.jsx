@@ -228,9 +228,7 @@ const TeacherDashboard = () => {
                     <Link key={c._id} passHref={true}  href={`/teacher/classroom/${c._id}`} className="cursor-pointer">
 
                     <div>
-
-
-                    <Classes   title={c.title} sem={c.semester} />
+                      <Classes   title={c.title} sem={c.semester} />
                     </div>
                     </Link>
                   ))}

@@ -1,11 +1,44 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Notice from "../../../../components/Notice";
-
+import baseUrl from "../../../../util/baseUrl";
 const Notices = () => {
   const router = useRouter();
   const { id } = router.query;
+  useEffect(() => {
+    fetchNotices();
+  }, []);
+
+  const [notices, setNotices] = useState([]);
+  const fetchNotices = async () => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      router.push("/account/login");
+    }
+
+    var data = {
+      token: token,
+    };
+
+    const settings = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const fetchResponse = await fetch(
+      `${baseUrl}/api/notice/student`,
+      settings
+    );
+    const response = await fetchResponse.json();
+    console.log(response);
+    if (fetchResponse.status == 200) {
+      setNotices(response);
+    }
+  };
 
   return (
     <>
@@ -66,10 +99,12 @@ const Notices = () => {
         </div>
         <div className="border border-black" />
         <div>
-          <Notice />
-          <Notice />
-          <Notice />
-          <Notice />
+          <Notice
+            title={notices.title}
+            description={notices.description}
+            classroom={notices.classroom}
+            teacher={notices.classroom}
+          />
         </div>
       </div>
     </>

@@ -205,8 +205,12 @@ const StudentDashboard = () => {
                   <div className="m-2 p-3 flex">
                     {classRooms &&
                       classRooms.map((c) => (
+
+
+
                         <div key={c._id}>
                           <Subjects sub={c.title} teacher={c.teacherName} />
+                        
                         </div>
                       ))}
                   </div>
@@ -228,13 +232,14 @@ const StudentDashboard = () => {
 
                 {notices &&
                   notices.map((notice) => (
-                    <div key={notice._id}>
+
+                    <div key={notice._id} >
                       <Notice
                         title={notice.title}
                         description={notice.description}
                         classroom={notice.classroom}
                         teacher={teacher.classroom}
-                      />
+                        />
                     </div>
                   ))}
               </div>
