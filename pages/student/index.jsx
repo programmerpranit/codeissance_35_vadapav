@@ -14,7 +14,7 @@ const StudentDashboard = () => {
   const [notices, setNotices] = useState([]);
   const [assignments, setAssignments] = useState([]);
   const [classRooms, setClassRooms] = useState([]);
-  const [classId, setClassId] = useState("")
+  const [classId, setClassId] = useState("");
 
   // import {IoIosAdd }from "react-icons/IoIosAdd"
 
@@ -55,7 +55,7 @@ const StudentDashboard = () => {
     if (fetchResponse.status == 200) {
       setClassRooms(response);
     }
-  }
+  };
 
   const fetchAssignments = async () => {
     const token = localStorage.getItem("token");
@@ -123,7 +123,7 @@ const StudentDashboard = () => {
 
     var data = {
       token: token,
-      id: classId
+      id: classId,
     };
 
     const settings = {
@@ -141,9 +141,9 @@ const StudentDashboard = () => {
     const response = await fetchResponse.json();
     console.log(response);
     if (fetchResponse.status == 201) {
-      console.log("Enrolled Successfully")
+      console.log("Enrolled Successfully");
     }
-  }
+  };
 
   useEffect(() => {
     fetchNotices();
@@ -173,19 +173,21 @@ const StudentDashboard = () => {
             </ul>
           </div>
 
-
-          <div className="">
-
-          <input type="text" onChange={(e)=>{
-            setClassId(e.target.value)
-          }} />
-
-          <button className="p-3 bg-slate-700" onClick={enroll}>Enroll</button>
-
-
+          <div className="m-2 p-2 flex justify-end">
+            <div >
+            <input
+              className="m-2 p-2 border border-black text-md text-black h-10 rounded-sm"
+              type="text"
+              placeholder="Enter class Code"
+              onChange={(e) => {
+                setClassId(e.target.value);
+              }}
+            />
+            </div>
+            <button className="p-2 m-2 hover:bg-slate-700 border-black border rounded-md" onClick={enroll}>
+              Enroll
+            </button>
           </div>
-
-
 
           {/* classes */}
           <div className=" bg-[#ddd6fe] ">
@@ -201,14 +203,12 @@ const StudentDashboard = () => {
               >
                 <div>
                   <div className="m-2 p-3 flex">
-
-                  {classRooms && classRooms.map((c)=>(
-                    <div key={c._id} >
-
-                    <Subjects sub={c.title} teacher={c.teacherName} />
-                    </div>
-                  ))}
-                    
+                    {classRooms &&
+                      classRooms.map((c) => (
+                        <div key={c._id}>
+                          <Subjects sub={c.title} teacher={c.teacherName} />
+                        </div>
+                      ))}
                   </div>
                 </div>
               </div>
@@ -228,15 +228,13 @@ const StudentDashboard = () => {
 
                 {notices &&
                   notices.map((notice) => (
-                    <div key={notice._id}> 
-
-                    <Notice
-                    
-                    title={notice.title}
-                    description={notice.description}
-                    classroom={notice.classroom}
-                    teacher={teacher.classroom}
-                    />
+                    <div key={notice._id}>
+                      <Notice
+                        title={notice.title}
+                        description={notice.description}
+                        classroom={notice.classroom}
+                        teacher={teacher.classroom}
+                      />
                     </div>
                   ))}
               </div>
@@ -252,13 +250,11 @@ const StudentDashboard = () => {
                 {notices &&
                   assignments.map((assignment) => (
                     <div key={assignment._id}>
-
-                    <Assignment
-                    
-                    title={assignment.title}
-                    dueDate={assignment.dueDate}
-                    description={assignment.description}
-                    />
+                      <Assignment
+                        title={assignment.title}
+                        dueDate={assignment.dueDate}
+                        description={assignment.description}
+                      />
                     </div>
                   ))}
               </div>
