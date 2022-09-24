@@ -16,13 +16,13 @@ export default function Home() {
         </p>
         <div className="flex justify-center mt-20">
           <Link href={"/account/signup"}>
-            <button className="text-lg  p-4 rounded-md m-2 text-black border-2 border-black">
+            <button className="text-lg hover:bg-blue-300  p-4 rounded-md m-2 text-black border-2 border-black">
               Sign Up!
             </button>
           </Link>
 
           <Link href={"/account/login"}>
-            <button className="text-lg p-4 m-2 rounded-md text-black border-2 border-black ">
+            <button className="text-lg p-4 m-2 hover:bg-blue-300  rounded-md text-black border-2 border-black ">
               Login
             </button>
           </Link>

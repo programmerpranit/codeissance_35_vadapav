@@ -93,7 +93,7 @@ const Login = () => {
         <div className="justify-center flex  mb-5">
           <button
             onClick={handleLogin}
-            className=" mt-4 bg-transparent text-slate-900 font-semibold  py-2 px-4 border border-black rounded"
+            className=" mt-4 bg-transparent hover:bg-blue-300  text-slate-900 font-semibold  py-2 px-4 border border-black rounded"
           >
             Login
           </button>
@@ -102,7 +102,7 @@ const Login = () => {
           <div className="m-4 mx-auto">
             <h1>
               Don't have an account?{" "}
-              <a className="text-green-900 font-bold hover:text-blue-800">
+              <a className="text-green-900 hover:bg-blue-300  font-bold hover:text-blue-800">
                 SignUp
               </a>{" "}
             </h1>
