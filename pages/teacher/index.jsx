@@ -189,7 +189,7 @@ const TeacherDashboard = () => {
             <div className="w-full text-center">
               <button
                 onClick={handleCreate}
-                className="mx-auto border-2 border-black rounded-md hover:bg-blue-300 bg-opacity-0 p-2 m-2"
+                className="mx-auto border-2 hover:bg-[#d1d5db] border-black rounded-md  bg-opacity-0 p-2 m-2"
               >
                 Create
               </button>
@@ -201,7 +201,7 @@ const TeacherDashboard = () => {
             <MdChevronLeft
               onClick={slideLeft}
               size={40}
-              className="bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden  group-hover:block"
+              className="bg-white hover:bg-[#d1d5db] left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden  group-hover:block"
             />
             <div
               id="slider"
@@ -228,7 +228,7 @@ const TeacherDashboard = () => {
             <MdChevronRight
               onClick={slideRight}
               size={40}
-              className="bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block "
+              className="bg-white hover:bg-[#d1d5db] right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block "
             />
           </div>
         </div>

@@ -192,7 +192,7 @@ const Classroom = () => {
             setDate(e.target.value)
           }}
         />
-        <button onClick={addAssignment} className="border-black border-2 m-4 rounded-md w-2/5 p-2 mx-auto">
+        <button onClick={addAssignment} className="border-black hover:bg-[#d1d5db] border-2 m-4 rounded-md w-2/5 p-2 mx-auto">
           Add assignment
         </button>
         

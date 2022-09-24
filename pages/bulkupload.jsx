@@ -135,6 +135,7 @@ const BulkUpload = () => {
 
             <div className="items-center text-2xl bg-gray-300 p-2 rounded-lg font-medium mx-10 my-5 border-black border-2 hover:bg-gray-400">
                 <button className="{
+                    hover:bg-[#d1d5db]
                  outline: 1px dotted;
                  outline: 5px auto -webkit-focus-ring-color;
                  }" onClick={handleParse}>Submit</button>

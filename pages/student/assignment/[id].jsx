@@ -102,7 +102,7 @@ const Assignment = () => {
               type="file"
             /> */}
 
-            <button className="border border-black rounded-sm p-2 m-3" onClick={submitAssignment}>
+            <button className="border hover:bg-[#d1d5db] border-black rounded-sm p-2 m-3" onClick={submitAssignment}>
               Send
             </button>
           </div>

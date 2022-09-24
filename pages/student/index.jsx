@@ -184,7 +184,7 @@ const StudentDashboard = () => {
               }}
             />
             </div>
-            <button className="p-2 m-2 hover:bg-slate-700 border-black border rounded-md" onClick={enroll}>
+            <button className="p-2 m-2 hover:bg-[#d1d5db]  border-black border rounded-md" onClick={enroll}>
               Enroll
             </button>
           </div>

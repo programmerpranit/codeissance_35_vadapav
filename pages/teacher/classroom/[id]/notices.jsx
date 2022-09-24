@@ -91,7 +91,7 @@ const Notices = () => {
                   className="bg-gray-50 w-3/6 border p-2.5 border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block    dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
               </div>
-              <button className="border border-black rounded-sm p-2.5 m-2.5">
+              <button className="border hover:bg-[#d1d5db] border-black rounded-sm p-2.5 m-2.5">
                 Send
               </button>
             </div>
