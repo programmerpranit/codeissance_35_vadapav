@@ -82,8 +82,15 @@ const Students = () => {
           <div className=" w-3/6 ">
             {students &&
               students.map((s) => (
+
                 <div key={s._id}>
+
+                <Link href={`/student/${s.studentId}`} >
+
+                <div >
                   <Student name={s.studentName} />
+                </div>
+                </Link>
                 </div>
               ))}
           </div>
