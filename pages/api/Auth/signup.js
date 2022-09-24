@@ -7,13 +7,13 @@ var CryptoJS = require("crypto-js");
 const handler = async (req, res) => {
     if (req.method == 'POST') {
 
-        const { name, email, role } = req.body;
+        const { name, email, role, prn } = req.body;
 
         try {
-            let user = new User({ name, email, password: CryptoJS.AES.encrypt(req.body.password,'secret123').toString(), teacher:role })
+            let user = new User({ name, email, password: CryptoJS.AES.encrypt(req.body.password,'secret123').toString(), teacher:role, prn:prn })
             await user.save();
             var token = jwt.sign(
-                { name: user.name, email: user.email, teacher: user.teacher, id: user._id },
+                { name: user.name, email: user.email, teacher: user.teacher, id: user._id},
                 'jwtsecret',
                 { expiresIn: "30d" })
 

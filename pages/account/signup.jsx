@@ -23,6 +23,7 @@ const Signup = () => {
       email: user.emailAddress,
       password: user.password,
       role: false,
+      prn: user.prnno
     };
 
     const settings = {

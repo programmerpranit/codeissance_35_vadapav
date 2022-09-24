@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     teacher: { type: Boolean, required: true, default: false},
-    prn: {type:Number},
+    prn: {type:Number, default:0},
     branch: {type: String},
     year: {type: Number}
 }, { timestamps: true })
