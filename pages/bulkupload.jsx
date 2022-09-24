@@ -55,7 +55,8 @@ const BulkUpload = () => {
             const parsedData = csv?.data;
             const columns = Object.keys(parsedData[0]);
             console.log(parsedData)
-            setData(columns);
+            setData(parsedData);
+             
         };
         reader.readAsText(file);
     };
@@ -80,21 +81,20 @@ const BulkUpload = () => {
                     name="radiobtn"
                     value="ia1"
                 />
-                <label for="radio-btn">IA-1</label>
-
+                <label htmlFor="radio-btn">IA-1</label>
                 <input
                     type="radio"
                     name="radiobtn"
                     value="ia2"
                 />
-                <label for="radio-btn">IA-2</label>
+                <label htmlFor="radio-btn">IA-2</label>
 
                 <input
                     type="radio"
                     name="radiobtn"
                     value="sem"
                 />
-                <label for="radio-btn">Semester</label>
+                <label htmlFor="radio-btn">Semester</label>
 
 
             </div>

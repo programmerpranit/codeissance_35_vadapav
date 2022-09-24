@@ -1,13 +1,11 @@
 import Link from "next/link";
 import React from "react";
-import { useRouter } from 'next/router'
-import Notice from '../../../../components/Notice'
+import { useRouter } from "next/router";
+import Notice from "../../../../components/Notice";
 
 const Notices = () => {
-
-  const router = useRouter()
-  const { id } = router.query
-    
+  const router = useRouter();
+  const { id } = router.query;
 
   return (
     <>
@@ -48,8 +46,8 @@ const Notices = () => {
           <div className=" rounded-md  rounded-black ">
             <div className="flex-col">
               <label
-                for="default-input"
-                class="block text-lg m-2  text-black r p-2  font-medium "
+                htmlFor="default-input"
+                className="block text-lg m-2  text-black r p-2  font-medium "
               >
                 Add Notice:
               </label>
@@ -60,7 +58,9 @@ const Notices = () => {
                   className="bg-gray-50 w-3/6 border p-2.5 border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block    dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
               </div>
-              <button className="border border-black rounded-sm p-2.5 m-2.5">Send</button>
+              <button className="border border-black rounded-sm p-2.5 m-2.5">
+                Send
+              </button>
             </div>
           </div>
         </div>
