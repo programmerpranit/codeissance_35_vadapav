@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import baseUrl from "../../util/baseUrl";
 import { useRouter } from "next/router";
 
+
 const TeacherSignup = () => {
   const router = useRouter();
   const [user, setUser] = useState({
