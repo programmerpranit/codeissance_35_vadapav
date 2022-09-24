@@ -1,65 +1,84 @@
 import React, { useState } from "react";
 import Papa from "papaparse";
+import baseUrl from "../util/baseUrl"
 
 // Allowed extensions for input file
 const allowedExtensions = ["csv"];
 
 const BulkUpload = () => {
 
-    // This state will store the parsed data
+    const [semester, setSemester] = useState(1);
+    const [exam, setExam] = useState("ia1")
+
     const [data, setData] = useState([]);
 
-    // It state will contain the error when
-    // correct file extension is not used
     const [error, setError] = useState("");
 
-    // It will store the file uploaded by the user
     const [file, setFile] = useState("");
 
-    // This function will be called when
-    // the file input changes
     const handleFileChange = (e) => {
         setError("");
 
-        // Check if user has entered the file
         if (e.target.files.length) {
             const inputFile = e.target.files[0];
 
-            // Check the file extensions, if it not
-            // included in the allowed extensions
-            // we show the error
             const fileExtension = inputFile?.type.split("/")[1];
             if (!allowedExtensions.includes(fileExtension)) {
                 setError("Please input a csv file");
                 return;
             }
 
-            // If input type is correct set the state
             setFile(inputFile);
         }
     };
     const handleParse = () => {
 
-        // If user clicks the parse button without
-        // a file we show a error
         if (!file) return setError("Enter a valid file");
 
-        // Initialize a reader which allows user
-        // to read any file or blob.
         const reader = new FileReader();
 
-        // Event listener on reader when the file
-        // loads, we parse it and set the data.
         reader.onload = async ({ target }) => {
             const csv = Papa.parse(target.result, { header: true });
-            const parsedData = csv?.data;
-            const columns = Object.keys(parsedData[0]);
+            const parsedData = await csv?.data;
             console.log(parsedData)
             setData(parsedData);
+            uploadFile(parsedData)
              
         };
         reader.readAsText(file);
     };
+
+    const uploadFile = async (d) => {
+        
+        const data = {
+            d: d,
+            semester: semester,
+            exam: exam
+        }
+
+        console.log(data)
+
+          const settings = {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+          const fetchResponse = await fetch(`${baseUrl}/api/bulkupload`, settings);
+          const response = await fetchResponse.json();
+      
+          if (fetchResponse.status === 200) {
+            
+            console.log(response)
+            
+          } else {
+            console.log(response)
+            
+          }
+    }
+
 
     return (
         <div className="bg-transparent flex flex-col items-center align-center mt-48 border-black border-2 mx-auto w-2/6 my-20 rounded-lg">
@@ -80,12 +99,19 @@ const BulkUpload = () => {
                     type="radio"
                     name="radiobtn"
                     value="ia1"
+
+                    onSelect={(e)=>{
+                        setExam(e.target.value)
+                    }}
                 />
                 <label htmlFor="radio-btn">IA-1</label>
                 <input
                     type="radio"
                     name="radiobtn"
                     value="ia2"
+                    onSelect={(e)=>{
+                        setExam(e.target.value)
+                    }}
                 />
                 <label htmlFor="radio-btn">IA-2</label>
 
@@ -93,11 +119,18 @@ const BulkUpload = () => {
                     type="radio"
                     name="radiobtn"
                     value="sem"
+                    onSelect={(e)=>{
+                        setExam(e.target.value)
+                    }}
                 />
                 <label htmlFor="radio-btn">Semester</label>
-
+                
 
             </div>
+            <br />
+                <input type="number" placeholder="semester" onChange={(e)=>{
+                    setSemester(e.target.value)
+                }} />
 
 
             <div className="items-center text-2xl bg-gray-300 p-2 rounded-lg font-medium mx-10 my-5 border-black border-2 hover:bg-gray-400">
