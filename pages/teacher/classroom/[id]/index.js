@@ -155,8 +155,13 @@ const Classroom = () => {
           </ul>
         </div>
       </div>
+      <div>
+        <div>
+          <h1 className="border border-black text-lg">Class Code : {id} </h1>
+        </div>
+      </div>
 
-      Class Id = {id}
+      {/* Class Id = {id} */}
 
       <div className="flex flex-col m-4 p-4 mx-auto border-black border-2 rounded-md w-3/6">
         <h1 className="text-2xl">Add assignment</h1>
@@ -177,7 +182,7 @@ const Classroom = () => {
           }}
           />
         <input
-          className="border-black border mt-4 "
+          className="border-black border mt-4 p-2"
           type="date"
           placeholder="Set Due Date"
           name="dueDate"
