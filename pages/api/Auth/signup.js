@@ -21,6 +21,8 @@ const handler = async (req, res) => {
         } catch (error) {
             res.status(500).json({ message: error });
         }
+    } else {
+        res.status(500).json({ message: "method is not allowed" });
     }
 }
 

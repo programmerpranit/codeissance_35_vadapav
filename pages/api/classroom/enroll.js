@@ -6,9 +6,7 @@ const handler = async (req, res) => {
 
     const { token, id } = req.body
     const user =  jwt.decode(token,"jwtsecret");
-    if (user.teacher) {
-        return res.status(401).json({ message: "You are not Student" });
-    }
+
 
     if (user) {
 
