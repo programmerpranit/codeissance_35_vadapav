@@ -5,6 +5,7 @@ import baseUrl from "../../../../util/baseUrl";
 
 
 
+
 const Classroom = () => {
 
   const router = useRouter()
@@ -141,13 +142,13 @@ const Classroom = () => {
             Nikaaal 
           </h1>
           <ul className="flex m-4">
-            <Link href={"#"}>
+            <Link href={`/teacher/classroom/${id}`}>
               <li className="p-4 text-yellow-900">Assignments</li>
             </Link>
-            <Link href={"#"}>
+            <Link href={`/teacher/classroom/${id}/students`}>
               <li className="p-4 ">Students</li>
             </Link>
-            <Link href={"#"}>
+            <Link href={`/teacher/classroom/${id}/notices`}>
               <li className="p-4 ">Notices</li>
             </Link>
             <Link href={"#"}>
@@ -157,8 +158,9 @@ const Classroom = () => {
         </div>
       </div>
       <div>
-        <div>
-          <h1 className="border border-black text-lg">Class Code : {id} </h1>
+        <div className="border border-black text-lg flex justify-between">
+          <h1 className="  text-lg">Class Code : {id} </h1>
+          <Link className="hover:text-yellow-800 m-2" href={`/bulkupload`}>Bulk Upload Marks</Link>
         </div>
       </div>
 

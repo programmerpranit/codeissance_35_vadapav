@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 const Students = () => {
   const router = useRouter();
   const { id } = router.query;
+  console.log(id)
 
   const [students, setStudents] = useState([]);
 

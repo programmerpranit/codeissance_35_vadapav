@@ -153,6 +153,20 @@ const StudentDashboard = () => {
 
   return (
     <>
+
+    
+{/* <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      /> */}
+
       <div>
         <div>
           {/* navigation bar */}
@@ -174,17 +188,20 @@ const StudentDashboard = () => {
           </div>
 
           <div className="m-2 p-2 flex justify-end">
-            <div >
-            <input
-              className="m-2 p-2 border border-black text-md text-black h-10 rounded-sm"
-              type="text"
-              placeholder="Enter class Code"
-              onChange={(e) => {
-                setClassId(e.target.value);
-              }}
-            />
+            <div>
+              <input
+                className="m-2 p-2 border border-black text-md text-black h-10 rounded-sm"
+                type="text"
+                placeholder="Enter class Code"
+                onChange={(e) => {
+                  setClassId(e.target.value);
+                }}
+              />
             </div>
-            <button className="p-2 m-2 hover:bg-[#d1d5db]  border-black border rounded-md" onClick={enroll}>
+            <button
+              className="p-2 m-2 hover:bg-[#d1d5db]  border-black border rounded-md"
+              onClick={enroll}
+            >
               Enroll
             </button>
           </div>
@@ -199,18 +216,14 @@ const StudentDashboard = () => {
               />
               <div
                 id="slider"
-                className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
+                className="w-full h-full flex overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
               >
                 <div>
                   <div className="m-2 p-3 flex">
                     {classRooms &&
                       classRooms.map((c) => (
-
-
-
                         <div key={c._id}>
                           <Subjects sub={c.title} teacher={c.teacherName} />
-                        
                         </div>
                       ))}
                   </div>
@@ -232,14 +245,13 @@ const StudentDashboard = () => {
 
                 {notices &&
                   notices.map((notice) => (
-
-                    <div key={notice._id} >
+                    <div key={notice._id}>
                       <Notice
                         title={notice.title}
                         description={notice.description}
                         classroom={notice.classroom}
                         teacher={teacher.classroom}
-                        />
+                      />
                     </div>
                   ))}
               </div>
@@ -247,24 +259,23 @@ const StudentDashboard = () => {
           </div>
           <div className="flex ">
             <div className="m-4 ">
-              <div>
                 <h1 className="text-2xl font-bold ml-5 border-b border-black">
                   Assignments:
                 </h1>
+              <div className="flex">
 
                 {notices &&
                   assignments.map((assignment) => (
                     <div key={assignment._id}>
                       <Link href={`/student/assignment/${assignment._id}`}>
-                        <div>
-
-                      <Assignment
-                        title={assignment.title}
-                        dueDate={assignment.dueDate}
-                        description={assignment.description}
-                        />
+                        <div className="flex mx-auto">
+                          <Assignment
+                            title={assignment.title}
+                            dueDate={assignment.dueDate}
+                            description={assignment.description}
+                          />
                         </div>
-                        </Link>
+                      </Link>
                     </div>
                   ))}
               </div>

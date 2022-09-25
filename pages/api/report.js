@@ -4,22 +4,24 @@ import User from "../../model/User";
 
 const handler = async (req, res) => {
 
-
     if (req.method == 'POST') {
 
-        const { id } = req.body;
+        const { sid } = req.body;
+        console.log(req.body)
 
         try {
             
-            let user = await User.findById(id)
+            let user = await User.findById(sid)
+            console.log(user)
             let prn = user.prn
 
             let report = await Report.find({prn: prn})
+            console.log(report)
             
-            res.status(200).json({report: report, user:user})
+            res.status(200).json({report: report[0], user:user})
 
         } catch (error) {
-            res.status(500).json({ message: "error" })
+            res.status(500).json({error})
         }
 
     } else {

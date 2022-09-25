@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Papa from "papaparse";
 import baseUrl from "../util/baseUrl"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Allowed extensions for input file
 const allowedExtensions = ["csv"];
@@ -71,7 +73,7 @@ const BulkUpload = () => {
       
           if (fetchResponse.status === 200) {
             
-            console.log(response)
+            toast.success("Marks updated successfully")
             
           } else {
             console.log(response)
@@ -81,6 +83,21 @@ const BulkUpload = () => {
 
 
     return (
+
+        <>
+
+<ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
         <div className="bg-transparent flex flex-col items-center align-center mt-48 border-black border-2 mx-auto w-2/6 my-20 rounded-lg">
             <label htmlFor="csvInput" className="items-center text-2xl font-medium mx-10 my-8" style={{ display: "block" }}>
                 Enter CSV File
@@ -138,9 +155,10 @@ const BulkUpload = () => {
                     hover:bg-[#d1d5db]
                  outline: 1px dotted;
                  outline: 5px auto -webkit-focus-ring-color;
-                 }" onClick={handleParse}>Submit</button>
+                }" onClick={handleParse}>Submit</button>
             </div>
         </div>
+                </>
     );
 };
 

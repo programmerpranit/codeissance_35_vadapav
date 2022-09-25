@@ -68,14 +68,14 @@ const Login = () => {
         <h1 className="text-slate-900 rounded-md text-3xl m-5 p-2">Login</h1>
         <div className="flex-col ml-5 mb-5">
           <div className="">
-            <h3 className="text-slate-900 text-lg p-2 mb-1">Username</h3>
+            <h3 className="text-slate-900 text-lg p-2 mb-1">Email</h3>
             <input
               className="rounded-sm border-black border w-96 p-2 ml-2 mr-7"
               onChange={(e) => {
                 setUserName(e.target.value);
               }}
-              type="text"
-              placeholder="Enter Username"
+              type="email"
+              placeholder="Enter Email"
             />
           </div>
           <div className="">
@@ -93,7 +93,7 @@ const Login = () => {
         <div className="justify-center flex  mb-5">
           <button
             onClick={handleLogin}
-            className=" mt-4 bg-transparent hover:bg-blue-300  text-slate-900 font-semibold  py-2 px-4 border border-black rounded"
+            className=" mt-4 bg-transparent hover:bg-[#d1d5db]  text-slate-900 font-semibold  py-2 px-4 border border-black rounded"
           >
             Login
           </button>
@@ -101,8 +101,8 @@ const Login = () => {
         <Link href={"/account/signup"}>
           <div className="m-4 mx-auto">
             <h1>
-              Don't have an account?{" "}
-              <a className="text-green-900 hover:bg-blue-300  font-bold hover:text-blue-800">
+              Don&apos;t have an account?{" "}
+              <a className="text-green-900   font-bold ">
                 SignUp
               </a>{" "}
             </h1>

@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router'
+import baseUrl from "../../util/baseUrl";
+
 
 const Report = () => {
 
   const router = useRouter()
   const { id } = router.query;
 
+  console.log(id)
+
   const [report, setReport] = useState({});
   const [user, setUser] = useState({})
 
   const fetchReport = async () =>  {
        
-    const data = {
-      id: id
-  }
+    var data = {
+      sid: id
+    }
+  console.log(data)
 
     const settings = {
       method: "POST",
@@ -29,7 +34,7 @@ const Report = () => {
     if (fetchResponse.status === 200) {
 
       setReport(response.report)
-      setReport(response.user)
+      setUser(response.user)
       
       console.log(response)
       
@@ -38,6 +43,11 @@ const Report = () => {
       
     }
   }
+
+  useEffect(() => {
+    fetchReport();
+  }, [])
+  
 
   return (
     <>
@@ -91,7 +101,7 @@ const Report = () => {
             <div className="w-1/3 py-4 text-3xl text-center">
               <div className="flex flex-col">
                 <div className="">Total Marks</div>
-                <div className="mt-6">78</div>
+                <div className="mt-6">-</div>
               </div>
             </div>
           </div>

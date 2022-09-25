@@ -8,9 +8,9 @@ export default function Home() {
     <>
       <div className="flex-col content-center ">
         <h1 className="text-5xl font-bold text-center  border-b-2 border-black p-4 m-2">
-          Nikaaal
+          Nikaaal 📄
         </h1>
-        <p className="text-6xl p-8 m-2 mt-20  border-2 rounded-md  border-black font-sans text-center font-bold ">
+        <p className="text-6xl p-8 m-2 mt-40 w-5/6 mx-auto  border-2 rounded-md  border-black font-sans text-center font-bold bg-[#d1d5db]">
         The ultimate destination for managing student reports, assignments and more!
 
         </p>

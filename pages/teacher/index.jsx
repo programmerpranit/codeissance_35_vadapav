@@ -144,7 +144,7 @@ const TeacherDashboard = () => {
 
           <div className="m-4 p-4 border-2 w-3/6  border-black rounded-md">
             <div>
-              <h1 className="border-b-2 text-black  border-black">
+              <h1 className="border-b-2 font-bold text-2xl text-black  border-black">
                 Create Classroom
               </h1>
               <div className="flex ">
@@ -207,7 +207,7 @@ const TeacherDashboard = () => {
               id="slider"
               className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
             >
-              <div>
+              <div className="m-2">
                 <div className="m-2 p-3 flex">
                   {classRooms &&
                     classRooms.map((c) => (
@@ -215,9 +215,9 @@ const TeacherDashboard = () => {
                         key={c._id}
                         passHref={true}
                         href={`/teacher/classroom/${c._id}`}
-                        className="cursor-pointer"
+                        className="cursor-pointer m-2"
                       >
-                        <div>
+                        <div className="m-2">
                           <Classes title={c.title} sem={c.semester} />
                         </div>
                       </Link>

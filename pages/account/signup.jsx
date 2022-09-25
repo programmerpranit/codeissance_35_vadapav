@@ -151,7 +151,7 @@ const Signup = () => {
           <div className="justify-center flex  mb-5">
             <button
               onClick={handleSubmit}
-              className=" mt-4 bg-transparent font-semibold  hover:bg-blue-300  py-2 px-4 border border-black rounded"
+              className=" mt-4 bg-transparent font-semibold  hover:bg-[#d1d5db]  py-2 px-4 border border-black rounded"
             >
               Create Account
             </button>
